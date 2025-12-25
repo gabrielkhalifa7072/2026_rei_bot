@@ -1,0 +1,60 @@
+CREATE TABLE `asset_configs` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`asset` varchar(50) NOT NULL,
+	`name` varchar(100),
+	`is_monitored` enum('yes','no') NOT NULL DEFAULT 'yes',
+	`category` varchar(20),
+	`last_signal_at` timestamp,
+	`total_signals` int NOT NULL DEFAULT 0,
+	`win_rate` decimal(5,2) DEFAULT '0',
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `asset_configs_id` PRIMARY KEY(`id`),
+	CONSTRAINT `asset_configs_asset_unique` UNIQUE(`asset`)
+);
+--> statement-breakpoint
+CREATE TABLE `signal_history` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`signal_id` int NOT NULL,
+	`executed_at` timestamp,
+	`amount` decimal(10,2),
+	`entry_price` decimal(10,5),
+	`exit_price` decimal(10,5),
+	`profit` decimal(10,2),
+	`profit_percent` decimal(5,2),
+	`duration` int,
+	`notes` text,
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `signal_history_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
+CREATE TABLE `trading_signals` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`asset` varchar(50) NOT NULL,
+	`direction` enum('call','put') NOT NULL,
+	`entry_price` decimal(10,5) NOT NULL,
+	`confidence` decimal(5,2) NOT NULL,
+	`strength` decimal(3,2) NOT NULL,
+	`timeframe` varchar(10) NOT NULL DEFAULT '1M',
+	`ema_9` decimal(10,5),
+	`ema_20` decimal(10,5),
+	`ema_50` decimal(10,5),
+	`rsi` decimal(5,2),
+	`adx` decimal(5,2),
+	`bb_upper` decimal(10,5),
+	`bb_middle` decimal(10,5),
+	`bb_lower` decimal(10,5),
+	`volume_ratio` decimal(5,2),
+	`candle_pattern` varchar(50),
+	`pattern_strength` decimal(3,2),
+	`reasons` text,
+	`filters` text,
+	`support_levels` text,
+	`resistance_levels` text,
+	`status` enum('pending','active','closed','expired') NOT NULL DEFAULT 'pending',
+	`result` enum('win','loss','break_even','pending') NOT NULL DEFAULT 'pending',
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `trading_signals_id` PRIMARY KEY(`id`)
+);
