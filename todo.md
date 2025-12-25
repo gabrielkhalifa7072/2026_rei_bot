@@ -29,48 +29,49 @@
 - [ ] Gráfico de preço em tempo real
 
 ### Histórico e Filtros
-- [ ] Tabela de histórico de sinais
-- [ ] Filtro por ativo
-- [ ] Filtro por direção (CALL/PUT)
+- [x] Tabela de histórico de sinais
+- [x] Filtro por ativo
+- [x] Filtro por direção
+- [x] Exportar histórico (CSV)
 - [ ] Filtro por período (hoje, semana, mês)
 - [ ] Busca por timestamp
-- [ ] Exportar histórico
 
 ### Estatísticas
-- [ ] Taxa de acerto geral
-- [ ] Total de sinais gerados
-- [ ] Sinais por ativo
-- [ ] Sinais por direção
+- [x] Taxa de acerto geral
+- [x] Total de sinais gerados
+- [x] Sinais por ativo
+- [x] Sinais por direção
 - [ ] Gráfico de performance
 - [ ] Estatísticas por período
 
 ### Notificações
-- [ ] Notificação visual quando novo sinal
-- [ ] Notificação ao proprietário (>70% confiança)
+- [x] Notificação ao proprietário (>70% confiança)
+- [x] Toast com detalhes do sinal
+- [ ] Notificação visual quando novo sinal (WebSocket)
 - [ ] Som de alerta (opcional)
-- [ ] Toast com detalhes do sinal
 - [ ] Histórico de notificações
 
 ### Integração com Robô
-- [ ] Endpoint para receber sinais
-- [ ] Validação de sinais recebidos
-- [ ] Persistência automática
-- [ ] Tratamento de erros
+- [x] Endpoint para receber sinais
+- [x] Validação de sinais recebidos
+- [x] Persistência automática
+- [x] Tratamento de erros
 
 ### UI/UX
-- [ ] Tema escuro profissional
-- [ ] Responsividade mobile/tablet/desktop
+- [x] Tema escuro profissional
+- [x] Responsividade mobile/tablet/desktop
+- [x] Loading states
+- [x] Empty states
+- [x] Error handling
 - [ ] Animações suaves
-- [ ] Loading states
-- [ ] Empty states
-- [ ] Error handling
 
 ### Testes
-- [ ] Testes unitários do backend
+- [x] Testes unitários do backend (11 testes)
 - [ ] Testes de integração
 - [ ] Testes de UI
 
 ## Progresso
 
-**Status:** Em desenvolvimento
+**Status:** Funcionalidades principais implementadas
 **Última atualização:** 2025-12-25
+**Testes:** 11/11 passando

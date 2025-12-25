@@ -6,13 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { DirectionFilter } from "@/components/DirectionFilter";
 import {
   TrendingUp,
   TrendingDown,
@@ -219,21 +213,10 @@ export default function Dashboard() {
             />
 
             {/* Direction Filter */}
-            <Select
+            <DirectionFilter
               value={filterDirection}
-              onValueChange={(value) =>
-                setFilterDirection(value as "call" | "put" | "")
-              }
-            >
-              <SelectTrigger className="bg-slate-900 border-slate-700 text-white">
-                <SelectValue placeholder="Filtrar por direção" />
-              </SelectTrigger>
-              <SelectContent className="bg-slate-900 border-slate-700">
-                <SelectItem value="">Todas as direções</SelectItem>
-                <SelectItem value="call">CALL (Alta)</SelectItem>
-                <SelectItem value="put">PUT (Baixa)</SelectItem>
-              </SelectContent>
-            </Select>
+              onChange={setFilterDirection}
+            />
 
             {/* Clear Filters */}
             <Button
